@@ -19,12 +19,30 @@ def main():
     print("Welcome to your gift list manager.")
 
     # Load directory into program for editing.
+    try:
+     infile = open("gift_ideas.txt", a)
+    except IOError:
+     print("There's no file containing your gift lists yet.")
+     print("I'll create one for you!")
+
+  # Transfer text file into dictionary.
+  for 
     
     # Display menu.
-
+    for option in enumerate(MAIN_MENU):
+		  print(option)
+		
     # Let user make a selection.
-
+    selection = int(input("What would you like to do? >>>"))
+    while not selection.isalnum():
+      print("Please enter an integer from 1 to 3.")
+      selection = int(input("What would you like to do? >>>")
+	
     # Run different functions based on user selection.
+    if selection == VIEW:
+      view_recipients(
+                      
+                      
 
 # Display menu.
 # Menu should allow user to add and remove people, view a list of people that
