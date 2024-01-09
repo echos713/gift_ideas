@@ -7,7 +7,11 @@ the feel like giving gifts to!
 """
 
 # Define global constants
-
+MAIN_MENU = ["View Recipients", "Add Recipient", "Remove Recipient"]
+RECIPIENT_MENU = ["View Gift List", "Add Item", "Remove Item"]
+VIEW = 1
+ADD = 2
+REMOVE = 3
  
 def main():
     """Run the mainline logic of the program."""
