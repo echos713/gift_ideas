@@ -9,23 +9,17 @@ the feel like giving gifts to!
 import pickle
 
 # Define global constants
-MAIN_MENU = ["View Recipients", "Add Recipient", "Remove Recipient"]
-RECIPIENT_MENU = ["View Gift List", "Add Item", "Remove Item"]
+MAIN_MENU = ["View Recipients", "Add Recipient", "Remove Recipient", "Exit Program"]
+RECIPIENT_MENU = ["View Gift List", "Add Item", "Remove Item", "Return to Main Menu"]
 VIEW = 1
 ADD = 2
 REMOVE = 3
+EXIT = 4
  
 def main():
     """Run the mainline logic of the program."""
     # Open program and welcome the user.
     print("Welcome to your gift list manager.")
-
-    # Load directory into program for editing.
-    try:
-     infile = open("gift_ideas.txt", a)
-    except IOError:
-     print("There's no file containing your gift lists yet.")
-     print("I'll create one for you!")
 
   # Read pkl file into dictionary.
   with open('gift_ideas.pkl', 'rb') as pick:
@@ -43,7 +37,7 @@ def main():
 	
     # Run different functions based on user selection.
     if selection == VIEW:
-      view_recipients(
+      view_recipients(gift_dict)
                       
                       
 
@@ -94,37 +88,53 @@ def del_user(old_recipient, thin_dict):
     # Return updated dictionary.
 
 # View recipents as a list.
-def view_recipients():
+def view_recipients(recip_dict):
     """Display the list of recipients and allow user to view the gift ideas
     for a selected recipient.
+    :param recip_dict: the complete recipient/gift idea dictionary
+    :type: dict
     """
 
     # Use for loop to print names in dict (the keys).
-
-    # Ask user whose gift ideas they want to see. 
+	print("Whose gift list would you like to access?")
+	for name, list in recip_dict:
+		print(name)
+	# Prompt user to select a recipient's list.
+	desired_recip = input(">>> ") 
 
     # While recipient is not in list...
+	while desired_recip not in recip_dict:
         # Inform user of error and ask again.
+		print("The selected recipient does not exist.")
+		desired_recip = input("Select again. ")
+
+	desired_list = recip_dict[desired_recip]
 
     # Pass input to fnc to view gift ideas.
+	print(f"What would you like to do with {desired_recip}'s gift list?")
+	for option in enumerate(RECIPIENT_MENU):
+		print(option)
+	menu_selection = int(input(">>> "))
+
+	if menu_selection == VIEW:
+		view_gifts(desired_recip, desired_list)
+	elif menu_selection == ADD:
+		
+	
 
 # View gift ideas for a given recipient.
-def view_gifts(queried_recip): 
+def view_gifts(queried_recip, queried_list): 
     """Displays the gift ideas for a recipient as a bulleted list.
-    :param queried_recip: person whose gift ideas are to be viewed
+    :param queried_recip: recipient whose gift ideas are to be viewed
     :type: str
+    :param queried_list: list of gift ideas for the queried recipient
+    :type: list
     """
 
     # Display a bulleted list, along with the recipient's name at the top.
-
-    # Ask user what they would like to do with the list: return to main menu,
-    # remove an item, or add an item. 
-
-    # If add (option 1) send to add item. 
-
-    # If remove (option 2) send to remove item.
-
-    # Else return to main menu. 
+	print(queried_recip)
+	for idea in queried_list:
+		print(f"- {idea}")
 
 # Add new item to the recipient's list.
 def add_item(new_gift, all_ideas):
