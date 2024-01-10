@@ -137,15 +137,28 @@ def view_gifts(queried_recip, queried_list):
 		print(f"- {idea}")
 
 # Add new item to the recipient's list.
-def add_item(new_gift, all_ideas):
+def add_item(receiving_recip, receiving_list):
     """Adds a gift idea to a recipients list of gift ideas.
-    :param new_gift: the gift idea to be added to the recipient's list
+    :param receiving_recip: the recipient whose gift ideas list will grow
     :type: str
-    :param all_ideas: gift list for the recipient
+    :param receiving_list: gift list for the recipient
     :type: list
-    :returns thick_ideas: gift list with added item
+    :returns thick_list: gift list with added item
     :rtype: list
     """
+	# Prompt user for gift to add. 
+	new_gift = input(f"What gift would you like to add to {receiving_recip}'s list?"
+			 
+	# Check against list. Return to menu if already in list. 
+	if new_gift in receiving_list:
+		print("This item is already in the list!")
+
+	# Add item to list if not present.
+	else: 
+		thick_list = receiving_list.append(new_gift)
+		return thick_list
+
+	# Return the new list. 
 
 # Remove an item from the recipient's list. 
 def del_item(old_gift, all_ideas):
