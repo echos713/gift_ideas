@@ -5,6 +5,8 @@ Evan Choquette
 This program will allow the user to access lists of gift ideas for the people
 the feel like giving gifts to!
 """
+# Import modules.
+import pickle
 
 # Define global constants
 MAIN_MENU = ["View Recipients", "Add Recipient", "Remove Recipient"]
@@ -25,8 +27,9 @@ def main():
      print("There's no file containing your gift lists yet.")
      print("I'll create one for you!")
 
-  # Transfer text file into dictionary.
-  for 
+  # Read pkl file into dictionary.
+  with open('gift_ideas.pkl', 'rb') as pick:
+	  gift_dict = pickle.load(pick)
     
     # Display menu.
     for option in enumerate(MAIN_MENU):
